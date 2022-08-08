@@ -34,3 +34,35 @@ class Solution1:
             lcp += strs[0][i]
 
         return lcp
+
+
+class Solution2:
+    """
+    solution 2
+    N=len(strs)
+    M=min length of element in strs
+    time complexity=O(NM)
+    space complexity=O(1)
+    """
+
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        if len(strs) == 0:
+            return ""
+
+        s = len(strs[0])
+
+        for i in range(len(strs)):
+            t = len(strs[i])
+            if s > t:
+                s = t
+
+        if s == 0:
+            return ""
+
+        for i in range(s):
+            for str in strs:
+                if str[i] != strs[0][i]:
+                    return strs[0][:i]
+
+        return strs[0][:s]
